@@ -1,0 +1,141 @@
+/* Tổng thể container */
+.account-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+  background: linear-gradient(135deg, #0f2027, #203a43, #fd5e53);
+  overflow: hidden;
+  position: relative;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  margin: 20px;
+  z-index: 1; /* Đảm bảo container hiển thị đúng thứ tự */
+}
+
+/* Tạo hiệu ứng background chuyển động */
+.account-container::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 50% 50%, rgba(20, 21, 19, 0.15), rgba(255, 94, 83, 0.2), transparent 60%);
+  animation: backgroundSpin 10s infinite linear, backgroundPulse 5s infinite alternate;
+  z-index: -1; /* Đảm bảo lớp nền nằm dưới */
+  pointer-events: none; /* Ngăn chặn nền chặn sự kiện chuột */
+}
+
+/* Hiệu ứng background chuyển động và xoay */
+@keyframes backgroundSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Thêm hiệu ứng pulsate cho nền, làm cho nền phát sáng nhẹ nhàng */
+@keyframes backgroundPulse {
+  0% {
+    opacity: 0.4;
+    background: radial-gradient(circle at 50% 50%, rgba(20, 21, 19, 0.15), rgba(255, 94, 83, 0.2), transparent 60%);
+  }
+  50% {
+    opacity: 0.6;
+    background: radial-gradient(circle at 50% 50%, rgba(20, 21, 19, 0.2), rgba(255, 94, 83, 0.3), transparent 60%);
+  }
+  100% {
+    opacity: 0.8;
+    background: radial-gradient(circle at 50% 50%, rgba(20, 21, 19, 0.25), rgba(255, 94, 83, 0.4), transparent 60%);
+  }
+}
+
+/* Hiệu ứng chuyển động nền */
+@keyframes backgroundSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Hộp thông báo */
+.account-message {
+  position: relative;
+  text-align: center;
+  background: linear-gradient(90deg, rgba(255, 94, 83, 1), rgba(255, 166, 77, 0.9));
+  padding: 30px 50px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(255, 166, 77, 0.6), 0 10px 20px rgba(253, 94, 83, 0.8);
+  animation: popIn 0.8s ease-out;
+  transform-origin: center;
+  z-index: 2; /* Đảm bảo hộp thông báo hiển thị trên nền */
+}
+
+/* Hiệu ứng hộp bật lên */
+@keyframes popIn {
+  0% {
+    transform: scale(0.5) rotate(-10deg);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* Hiệu ứng ánh sáng bên trong */
+.account-message::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: calc(100% + 20px);
+  height: calc(100% + 20px);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent 70%);
+  border-radius: 15px;
+  animation: pulseGlow 2s infinite ease-in-out;
+  pointer-events: none; /* Ngăn chặn ánh sáng chặn sự kiện chuột */
+}
+
+/* Hiệu ứng ánh sáng phát ra */
+@keyframes pulseGlow {
+  0% {
+    opacity: 0.7;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 0.3;
+    transform: scale(1.05);
+  }
+}
+
+/* Link styled như một button */
+.account-message a {
+  display: inline-block;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.9), 0 0 30px rgba(255, 166, 77, 0.7);
+  letter-spacing: 1.5px;
+  text-decoration: none;
+  padding: 15px 30px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(255, 94, 83, 0.8), rgba(255, 166, 77, 1));
+  transition: all 0.4s ease;
+  box-shadow: 0 5px 15px rgba(255, 166, 77, 0.6), 0 10px 20px rgba(253, 94, 83, 0.8);
+  position: relative; /* Đảm bảo vùng click đúng */
+  z-index: 3; /* Link ở trên cùng */
+}
+
+/* Hover effect cho link */
+.account-message a:hover {
+  transform: translateY(-5px) scale(1.1);
+  background: linear-gradient(135deg, rgba(255, 94, 83, 1), rgba(255, 236, 179, 1));
+  box-shadow: 0 10px 20px rgba(255, 236, 179, 0.8), 0 15px 25px rgba(253, 94, 83, 1);
+  color: #fff;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.9), 0 0 40px rgba(255, 166, 77, 0.8);
+}
